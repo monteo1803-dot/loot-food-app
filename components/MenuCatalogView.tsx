@@ -87,8 +87,8 @@ const MenuCatalogView: React.FC<Props> = ({ onBack, t, isDarkMode = false }) => 
 
     return (
         <div className={`min-h-screen pb-20 animate-in fade-in duration-500 ${isDarkMode
-                ? 'bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900'
-                : 'bg-gradient-to-b from-gray-50 to-white'
+            ? 'bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900'
+            : 'bg-gradient-to-b from-gray-50 to-white'
             }`}>
             <div className="container mx-auto px-4 md:px-8 pt-10">
 
@@ -118,8 +118,8 @@ const MenuCatalogView: React.FC<Props> = ({ onBack, t, isDarkMode = false }) => 
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className={`w-full pl-12 pr-4 py-3 rounded-full border-2 outline-none transition-colors ${isDarkMode
-                                    ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-loot-red'
-                                    : 'bg-white border-gray-200 text-gray-900 focus:border-loot-red'
+                                ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-500 focus:border-loot-red'
+                                : 'bg-white border-gray-200 text-gray-900 focus:border-loot-red'
                                 }`}
                         />
                     </div>
@@ -127,15 +127,16 @@ const MenuCatalogView: React.FC<Props> = ({ onBack, t, isDarkMode = false }) => 
                     {/* Rarity Filter */}
                     <div className="flex gap-2 flex-wrap justify-center">
                         {[
-                            { key: 'all', label: 'Tous' },
-                            { key: 'legendary', label: '⭐ Légendaire' },
-                            { key: 'epic', label: '💎 Épique' },
-                            { key: 'rare', label: '💙 Rare' },
-                            { key: 'common', label: '📦 Commun' },
+                            { key: 'all', label: t.filterAll || 'Tous' },
+                            { key: 'legendary', label: `⭐ ${t.filterLegendary || 'Légendaire'}` },
+                            { key: 'epic', label: `💎 ${t.filterEpic || 'Épique'}` },
+                            { key: 'rare', label: `💙 ${t.filterRare || 'Rare'}` },
+                            { key: 'common', label: `📦 ${t.filterCommon || 'Commun'}` },
                         ].map((f) => (
                             <button
                                 key={f.key}
                                 onClick={() => setFilter(f.key)}
+                                aria-label={`${t.menuCatalog || 'Filtrer par'} ${f.label}`}
                                 className={`px-4 py-2 rounded-full font-bold text-sm transition-all ${filter === f.key
                                     ? 'bg-loot-red text-white'
                                     : isDarkMode

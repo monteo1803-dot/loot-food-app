@@ -1,9 +1,10 @@
 /**
  * Type-safe translation system for Loot Food
- * Generated from translations.ts to ensure type safety
+ * Core keys are required, extended keys are optional with fallback
  */
 
-export interface TranslationKeys {
+// Core translation keys that are required in all languages
+export interface CoreTranslationKeys {
     // Hero
     heroTitle: string;
     addressPlaceholder: string;
@@ -28,7 +29,7 @@ export interface TranslationKeys {
     rewardsDesc: string;
     rewardsBtn: string;
 
-    // Battle Pass
+    // Battle Pass Core
     battlePassTitle: string;
     battlePassTier: string;
     battlePassDailyQuests: string;
@@ -87,6 +88,69 @@ export interface TranslationKeys {
     spinAgain: string;
     addToCart: string;
 }
+
+// Extended translation keys (optional, with fallback in components)
+export interface ExtendedTranslationKeys {
+    // Battle Pass Extended
+    season?: string;
+    rewards?: string;
+    previousRewards?: string;
+    nextRewards?: string;
+    freeBox?: string;
+    goldBox?: string;
+    completed?: string;
+    dailyBonus?: string;
+    completeAll?: string;
+
+    // Menu Catalog
+    menuCatalog?: string;
+    menuTitle?: string;
+    menuDesc?: string;
+    searchDish?: string;
+    noResults?: string;
+    filterAll?: string;
+    filterLegendary?: string;
+    filterEpic?: string;
+    filterRare?: string;
+    filterCommon?: string;
+
+    // My Loot Boxes
+    myLootBoxes?: string;
+    lootBoxesTitle?: string;
+    lootBoxesDesc?: string;
+    boxesOpened?: string;
+    legendaryWins?: string;
+    totalValue?: string;
+    dishValue?: string;
+    noBoxesYet?: string;
+    startSpinning?: string;
+
+    // Achievements
+    achievements?: string;
+    achievementsTitle?: string;
+    achievementsDesc?: string;
+    unlockedAchievements?: string;
+    xpEarned?: string;
+    achFirstSpin?: string;
+    achFirstSpinDesc?: string;
+    achFoodLover?: string;
+    achFoodLoverDesc?: string;
+    achStreak7?: string;
+    achStreak7Desc?: string;
+    achLegendaryHunter?: string;
+    achLegendaryHunterDesc?: string;
+    achSpinMaster?: string;
+    achSpinMasterDesc?: string;
+    achBigSpender?: string;
+    achBigSpenderDesc?: string;
+    achWorldTraveler?: string;
+    achWorldTravelerDesc?: string;
+    achUltimateChampion?: string;
+    achUltimateChampionDesc?: string;
+}
+
+// Combined translation keys
+export type TranslationKeys = CoreTranslationKeys & ExtendedTranslationKeys;
 
 export type Language = 'fr' | 'en' | 'es' | 'de' | 'it' | 'nl' | 'pt' | 'pl' | 'tr' | 'ja';
 
