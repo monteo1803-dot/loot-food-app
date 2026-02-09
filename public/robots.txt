@@ -1,0 +1,18 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://lootfood.com/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /api/
+Disallow: /admin/
+
+# Allow search engines to index all public pages
+Allow: /
+Allow: /battlepass
+Allow: /leaderboard
+Allow: /jobs
+Allow: /faq
+Allow: /menu
