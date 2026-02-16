@@ -4,7 +4,7 @@ import { Trophy, Medal, Lock, CheckCircle2, Star, Flame, Target, Zap, Crown, Gif
 
 interface Props {
     onBack: () => void;
-    t: any;
+    t: Record<string, string>;
     isDarkMode?: boolean;
 }
 

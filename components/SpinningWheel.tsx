@@ -1,13 +1,15 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 
+interface WheelItem {
+    label: string;
+    color: string;
+    value?: unknown;
+}
+
 interface Props {
-    items: Array<{
-        label: string;
-        color: string;
-        value?: any;
-    }>;
-    onSpinEnd?: (item: any) => void;
+    items: WheelItem[];
+    onSpinEnd?: (item: WheelItem) => void;
     size?: number;
 }
 

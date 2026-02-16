@@ -6,7 +6,7 @@ import Hero from './components/Hero';
 import FeaturedBoxes from './components/FeaturedBoxes';
 import FoodGallery from './components/FoodGallery';
 import { AppProvider, useTheme, useLanguage, useCart, useUser, useNavigation } from './context/AppContext';
-import type { WheelTheme, ViewState } from './types';
+import type { WheelTheme, ViewState, Dish } from './types';
 
 // Lazy load secondary homepage components
 const HowItWorks = lazy(() => import('./components/HowItWorks'));
@@ -125,7 +125,7 @@ const AppContent: React.FC = () => {
   }, [currentView]);
 
   // Handler pour ajouter au panier depuis WheelView
-  const handleAddToCart = useCallback((item: any) => {
+  const handleAddToCart = useCallback((item: Dish) => {
     addToCart({
       ...item,
       wheelTheme: selectedBox?.id || 'unknown',

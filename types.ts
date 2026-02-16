@@ -1,14 +1,12 @@
-
-export interface BoxItem {
-  id: string;
-  name: string;
-  price: number;
-  segments: string[]; // hex colors for the wheel
-}
-
-export interface LeaderboardEntry {
-  rank: number;
-  name: string;
-  points: number;
-  avatar: string;
-}
+// Re-export all types from types/index.ts for backward compatibility
+export type {
+  Rarity,
+  WheelCategory,
+  WheelTheme,
+  Dish,
+  CartItem,
+  User,
+  ViewState,
+  CommonProps,
+  ViewProps,
+} from './types/index';

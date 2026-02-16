@@ -4,7 +4,7 @@ import { MapPin, Clock, Euro, ChefHat, Bike, Headphones, Star, ArrowRight } from
 
 interface Props {
     onBack: () => void;
-    t: any;
+    t: Record<string, string>;
     isDarkMode?: boolean;
 }
 

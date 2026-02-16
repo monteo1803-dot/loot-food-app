@@ -4,7 +4,7 @@ import { ArrowRight, Truck } from 'lucide-react';
 import WheelGraphic from './WheelGraphic';
 
 interface Props {
-  t: any;
+  t: Record<string, string>;
 }
 
 const HowItWorks: React.FC<Props> = ({ t }) => {

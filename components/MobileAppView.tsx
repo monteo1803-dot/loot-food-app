@@ -4,7 +4,8 @@ import { Smartphone, Download, Star, Zap, Gift, Bell, QrCode, Apple, Play } from
 
 interface Props {
     onBack: () => void;
-    t: any;
+    t: Record<string, string>;
+    isDarkMode?: boolean;
 }
 
 const MobileAppView: React.FC<Props> = ({ onBack, t }) => {

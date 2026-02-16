@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useCallback, useEffect, useMemo, ReactNode } from 'react';
-import type { User, CartItem, ViewState, WheelTheme } from '../types';
+import type { User, CartItem, ViewState, WheelTheme } from '../types/index';
+import type { Language } from '../types/translations';
 import { translations } from '../translations';
 
 // ============== THEME CONTEXT ==============
@@ -66,10 +67,10 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
         localStorage.setItem('lootfood_language', lang);
     }, []);
 
-    const t = useMemo(() =>
-        (translations as Record<string, Record<string, string>>)[language] || translations['fr'],
-        [language]
-    );
+    const t = useMemo(() => {
+        const lang = language as Language;
+        return (translations[lang] || translations['fr']) as unknown as Record<string, string>;
+    }, [language]);
 
     return (
         <LanguageContext.Provider value={{ language, setLanguage, t }}>

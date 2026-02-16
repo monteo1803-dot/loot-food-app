@@ -23,7 +23,7 @@ interface Props {
   onLangChange: (lang: string) => void;
   isLoggedIn?: boolean;
   user?: UserData | null;
-  t: any;
+  t: Record<string, string>;
   isDarkMode?: boolean;
   onDarkModeToggle?: () => void;
   userXP?: number;

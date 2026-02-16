@@ -4,7 +4,7 @@ import { Trophy, Coins, Zap } from 'lucide-react';
 
 interface Props {
   onBattlePassClick?: () => void;
-  t: any;
+  t: Record<string, string>;
 }
 
 const Rewards: React.FC<Props> = ({ onBattlePassClick, t }) => {

@@ -45,6 +45,8 @@ export interface User {
     avatar?: string;
     xp?: number;
     level?: number;
+    coins?: number;
+    orders?: number;
 }
 
 // État de vue

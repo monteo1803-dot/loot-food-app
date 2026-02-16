@@ -4,7 +4,7 @@ import { HelpCircle, ChevronDown, ChevronUp, MessageCircle, Mail, Phone } from '
 
 interface Props {
     onBack: () => void;
-    t: any;
+    t: Record<string, string>;
     isDarkMode?: boolean;
 }
 

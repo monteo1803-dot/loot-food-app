@@ -4,7 +4,7 @@ import { ChefHat, Star, Flame, Filter, Search, Crown, Gem, Zap, Package } from '
 
 interface Props {
     onBack: () => void;
-    t: any;
+    t: Record<string, string>;
     isDarkMode?: boolean;
 }
 
