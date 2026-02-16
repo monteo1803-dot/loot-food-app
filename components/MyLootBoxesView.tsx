@@ -4,7 +4,7 @@ import { Package, Star, Clock, ChefHat, Sparkles, Crown, Gem, Zap } from 'lucide
 
 interface Props {
     onBack: () => void;
-    t: any;
+    t: Record<string, string>;
     isDarkMode?: boolean;
 }
 

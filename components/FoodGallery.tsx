@@ -2,7 +2,7 @@
 import React from 'react';
 
 interface Props {
-  t: any;
+  t: Record<string, string>;
   isDarkMode?: boolean;
 }
 

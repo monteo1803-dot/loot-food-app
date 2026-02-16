@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Send, MapPin } from 'lucide-react';
 
 interface Props {
-  t: any;
+  t: Record<string, string>;
   onGoClick?: (address: string) => void;
 }
 

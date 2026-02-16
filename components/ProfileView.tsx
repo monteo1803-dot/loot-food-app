@@ -1,16 +1,7 @@
 
 import React from 'react';
-import { ArrowLeft, Trophy, Coins, Star, ShoppingBag, Settings, LogOut, Crown, Zap, ChevronRight } from 'lucide-react';
-
-interface User {
-    name: string;
-    email: string;
-    avatar?: string;
-    level?: number;
-    xp?: number;
-    coins?: number;
-    orders?: number;
-}
+import { ArrowLeft, Trophy, Coins, Star, ShoppingBag, Settings, LogOut, Crown, ChevronRight } from 'lucide-react';
+import type { User } from '../types/index';
 
 interface Props {
     user: User;
@@ -21,18 +12,12 @@ interface Props {
 
 const ProfileView: React.FC<Props> = ({ user, onBack, onLogout, onBattlePassClick }) => {
     const userStats = {
-        level: user.level || 12,
-        xp: user.xp || 2450,
-        xpMax: 3000,
-        coins: user.coins || 156,
-        orders: user.orders || 23,
+        level: user.level || 1,
+        xp: user.xp || 0,
+        xpMax: 100,
+        coins: user.coins || 0,
+        orders: user.orders || 0,
     };
-
-    const recentOrders = [
-        { id: 1, name: 'Burger King - Maxi Menu', date: 'Aujourd\'hui', price: 12.95, status: 'delivered' },
-        { id: 2, name: 'McDonald\'s - Big Mac', date: 'Hier', price: 9.50, status: 'delivered' },
-        { id: 3, name: 'KFC - Bucket Original', date: '28 Jan', price: 15.99, status: 'delivered' },
-    ];
 
     return (
         <div className="min-h-screen bg-gray-50 pb-20">
@@ -41,7 +26,7 @@ const ProfileView: React.FC<Props> = ({ user, onBack, onLogout, onBattlePassClic
                 {/* Pattern overlay */}
                 <div
                     className="absolute inset-0 opacity-10"
-                    style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")' }}
+                    style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '8px 8px' }}
                 />
 
                 {/* Back button */}
@@ -123,7 +108,7 @@ const ProfileView: React.FC<Props> = ({ user, onBack, onLogout, onBattlePassClic
                             </div>
                             <div className="text-left">
                                 <div className="font-black text-lg uppercase tracking-tight">Pass de Combat</div>
-                                <div className="text-sm text-white/80 font-bold">Palier 3 • 38/55 XP</div>
+                                <div className="text-sm text-white/80 font-bold">Niveau {userStats.level} • {userStats.xp}/{userStats.xpMax} XP</div>
                             </div>
                         </div>
                         <ChevronRight className="w-6 h-6 text-white/60" />
@@ -137,25 +122,10 @@ const ProfileView: React.FC<Props> = ({ user, onBack, onLogout, onBattlePassClic
                     <h2 className="font-black text-xl uppercase tracking-tight mb-4 text-gray-900">
                         Commandes récentes
                     </h2>
-                    <div className="space-y-3">
-                        {recentOrders.map((order) => (
-                            <div
-                                key={order.id}
-                                className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex items-center gap-4"
-                            >
-                                <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center">
-                                    <ShoppingBag className="w-6 h-6 text-gray-400" />
-                                </div>
-                                <div className="flex-grow">
-                                    <div className="font-bold text-gray-900">{order.name}</div>
-                                    <div className="text-sm text-gray-400 font-medium">{order.date}</div>
-                                </div>
-                                <div className="text-right">
-                                    <div className="font-black text-loot-red">{order.price.toFixed(2).replace('.', ',')}€</div>
-                                    <div className="text-xs text-green-500 font-bold uppercase">Livré</div>
-                                </div>
-                            </div>
-                        ))}
+                    <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 text-center">
+                        <ShoppingBag className="w-12 h-12 text-gray-200 mx-auto mb-3" />
+                        <p className="font-bold text-gray-400">Aucune commande pour le moment</p>
+                        <p className="text-sm text-gray-300 mt-1">Vos commandes apparaitront ici</p>
                     </div>
                 </div>
             </div>

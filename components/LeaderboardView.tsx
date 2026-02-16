@@ -4,7 +4,7 @@ import { Trophy, Medal, Crown, Star, Flame, ChevronUp, ChevronDown } from 'lucid
 
 interface Props {
     onBack: () => void;
-    t: any;
+    t: Record<string, string>;
     isDarkMode?: boolean;
 }
 

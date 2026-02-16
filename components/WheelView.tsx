@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { ArrowLeft, Gift, Sparkles, Crown, Gem, Zap, Package, ShoppingCart, RotateCcw, Star } from 'lucide-react';
 import ConfettiEffect from './ConfettiEffect';
 
+import type { WheelTheme, Dish } from '../types/index';
+
 interface Props {
-  box: any;
+  box: WheelTheme | null;
   onBack: () => void;
-  onConfirm: (item: any) => void;
-  t?: any;
+  onConfirm: (item: Dish) => void;
+  t?: Record<string, string>;
   isDarkMode?: boolean;
 }
 

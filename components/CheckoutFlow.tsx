@@ -1,9 +1,10 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { X, ChevronLeft, MapPin, Calendar, Truck, Edit2, Gift, MessageSquare, CreditCard, ChevronDown, CheckCircle2, Play, Navigation, Timer } from 'lucide-react';
+import type { CartItem } from '../types/index';
 
 interface Props {
-  cart: any[];
+  cart: CartItem[];
   onBack: () => void;
 }
 
@@ -83,7 +84,7 @@ const CheckoutFlow: React.FC<Props> = ({ cart, onBack }) => {
               <div className="flex flex-col md:flex-row items-center gap-10">
                 <div className="w-56 h-56 bg-gray-50 rounded-[50px] p-8 border-4 border-loot-red shadow-inner flex items-center justify-center transform hover:rotate-3 transition-transform">
                   <img
-                    src={cart[0]?.img || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=400"}
+                    src={cart[0]?.image || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=400"}
                     className="w-full h-full object-contain"
                     alt="Ordered Item"
                     loading="lazy"
@@ -91,9 +92,8 @@ const CheckoutFlow: React.FC<Props> = ({ cart, onBack }) => {
                   />
                 </div>
                 <div className="space-y-4 flex-grow text-center md:text-left">
-                  <h4 className="font-black text-2xl italic">{cart[0]?.name || "Burger King - Maxi Menu"}</h4>
-                  <p className="text-sm font-bold text-gray-400 italic leading-relaxed">1 Steakhouse, 1 grande frite, Un Coca...</p>
-                  <p className="text-loot-red font-black text-xs uppercase tracking-widest bg-loot-red/5 p-2 rounded-lg inline-block">Sauce : Mayo et Ketchup</p>
+                  <h4 className="font-black text-2xl italic">{cart[0]?.name || "Votre commande"}</h4>
+                  <p className="text-sm font-bold text-gray-400 italic leading-relaxed">{cart[0]?.restaurant || ''}</p>
                   <div className="text-gray-900 font-black text-4xl pt-4 tracking-tighter">{(cart[0]?.price || 12.95).toFixed(2).replace('.', ',')}€</div>
                 </div>
               </div>
@@ -191,7 +191,7 @@ const CheckoutFlow: React.FC<Props> = ({ cart, onBack }) => {
               <div className="w-full flex flex-col md:flex-row gap-12 items-center justify-center mb-12 text-left bg-gray-50 p-10 rounded-[50px] border-2 border-gray-100 shadow-inner">
                 <div className="w-48 h-48 bg-white rounded-[40px] p-8 border-4 border-loot-red shadow-xl transform -rotate-3">
                   <img
-                    src={cart[0]?.img || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=400"}
+                    src={cart[0]?.image || "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=400"}
                     className="w-full h-full object-contain"
                     alt="Ordered Item"
                     loading="lazy"
@@ -199,9 +199,8 @@ const CheckoutFlow: React.FC<Props> = ({ cart, onBack }) => {
                   />
                 </div>
                 <div className="space-y-3">
-                  <h4 className="font-black text-3xl italic">{cart[0]?.name || "Burger King - Maxi Menu"}</h4>
-                  <p className="text-sm font-bold text-gray-400 uppercase italic tracking-widest">1 Menu Steakhouse XL</p>
-                  <p className="text-loot-red font-black text-sm italic pt-4">Sauce : Double Mayo & Ketchup</p>
+                  <h4 className="font-black text-3xl italic">{cart[0]?.name || "Votre commande"}</h4>
+                  <p className="text-sm font-bold text-gray-400 uppercase italic tracking-widest">{cart[0]?.restaurant || ''}</p>
                   <div className="font-black text-4xl pt-6 text-gray-900">{(cart[0]?.price || 12.95).toFixed(2).replace('.', ',')}€</div>
                 </div>
               </div>
@@ -213,7 +212,7 @@ const CheckoutFlow: React.FC<Props> = ({ cart, onBack }) => {
 
         {/* MARIO MINI GAME SECTION */}
         <div className="w-full bg-loot-red rounded-[100px] p-20 text-center text-white shadow-[0_30px_60px_rgba(211,47,47,0.3)] mb-20 mt-16 overflow-hidden relative border-8 border-white/20">
-          <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/carbon-fibre.png")' }}></div>
+          <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '8px 8px' }}></div>
 
           <h2 className="text-6xl font-black italic uppercase mb-8 tracking-tighter relative z-10 leading-[0.85]">Détendez-vous,<br />on s'occupe de tout !</h2>
           <p className="text-white/80 font-bold mb-16 text-2xl relative z-10 italic">Collectez un maximum d'XP pour le pass de combat !</p>
@@ -226,7 +225,7 @@ const CheckoutFlow: React.FC<Props> = ({ cart, onBack }) => {
             </div>
 
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center font-mono font-black text-5xl italic tracking-tighter opacity-80 z-10 animate-pulse">
-              YOU'RE IMMORTAL HERE, L O L :'D
+              MINI GAME - COMING SOON
             </div>
 
             {/* Elements */}
@@ -281,7 +280,7 @@ const CheckoutFlow: React.FC<Props> = ({ cart, onBack }) => {
             <div className="flex flex-col sm:flex-row gap-8 mb-10 border-b border-gray-100 pb-10">
               <div className="w-40 h-40 bg-gray-50 rounded-[40px] p-6 flex items-center justify-center border-2 border-gray-100 shadow-inner flex-shrink-0">
                 <img
-                  src={cart[0].img}
+                  src={cart[0].image}
                   className="w-full h-full object-contain"
                   alt="Product"
                   loading="lazy"
@@ -291,10 +290,8 @@ const CheckoutFlow: React.FC<Props> = ({ cart, onBack }) => {
               <div className="flex-grow">
                 <h3 className="font-black text-2xl mb-3 italic uppercase tracking-tighter">{cart[0].name}</h3>
                 <ul className="text-sm text-gray-400 font-bold space-y-2 uppercase italic tracking-wide">
-                  <li>1 Steakhouse Original</li>
-                  <li>1 grande frites croustillantes</li>
-                  <li>Un Coca Cola Frais</li>
-                  <li className="text-loot-red font-black">Sauce : Mayo et Ketchup</li>
+                  <li>{cart[0].restaurant}</li>
+                  <li className="text-loot-red font-black">{cart[0].price.toFixed(2).replace('.', ',')}€</li>
                 </ul>
               </div>
             </div>
@@ -333,8 +330,8 @@ const CheckoutFlow: React.FC<Props> = ({ cart, onBack }) => {
         <div className="bg-white p-6 rounded-[35px] shadow-2xl border border-gray-100 flex items-center gap-6 transition-transform hover:scale-[1.02] cursor-pointer">
           <div className="bg-loot-red/10 p-4 rounded-3xl"><MapPin className="w-8 h-8 text-loot-red" /></div>
           <div className="flex-grow">
-            <p className="font-black text-xl italic uppercase tracking-tighter leading-none mb-1">Rue Houbrecht 4, Liège</p>
-            <p className="text-xs font-bold text-gray-400 italic">1er étage, 3e boîte aux lettres</p>
+            <p className="font-black text-xl italic uppercase tracking-tighter leading-none mb-1">Votre adresse de livraison</p>
+            <p className="text-xs font-bold text-gray-400 italic">Appuyez pour modifier</p>
           </div>
           <Edit2 className="w-6 h-6 text-gray-300 hover:text-loot-red transition-colors" />
         </div>
@@ -342,8 +339,8 @@ const CheckoutFlow: React.FC<Props> = ({ cart, onBack }) => {
         <div className="bg-white p-6 rounded-[35px] shadow-2xl border border-gray-100 flex items-center gap-6 transition-transform hover:scale-[1.02] cursor-pointer">
           <div className="bg-loot-red/10 p-4 rounded-3xl"><Truck className="w-8 h-8 text-loot-red" /></div>
           <div className="flex-grow">
-            <p className="font-black text-xl italic uppercase tracking-tighter leading-none mb-1">Devant ma porte</p>
-            <p className="text-xs font-bold text-loot-red italic">Appuyer sur la sonnette "Empire"</p>
+            <p className="font-black text-xl italic uppercase tracking-tighter leading-none mb-1">Instructions de livraison</p>
+            <p className="text-xs font-bold text-loot-red italic">Ajouter des instructions</p>
           </div>
           <Edit2 className="w-6 h-6 text-gray-300 hover:text-loot-red transition-colors" />
         </div>
@@ -395,7 +392,7 @@ const CheckoutFlow: React.FC<Props> = ({ cart, onBack }) => {
           {showRecap && (
             <div className="p-8 bg-gray-50/50 animate-in slide-in-from-top-4 duration-500">
               <div className="flex justify-between items-center mb-4">
-                <span className="font-bold text-gray-500 italic uppercase text-sm tracking-widest">Burger King - Maxi Menu</span>
+                <span className="font-bold text-gray-500 italic uppercase text-sm tracking-widest">{cart[0]?.name || 'Votre commande'}</span>
                 <span className="font-black text-xl text-loot-red">{subTotal.toFixed(2).replace('.', ',')}€</span>
               </div>
             </div>
@@ -419,8 +416,8 @@ const CheckoutFlow: React.FC<Props> = ({ cart, onBack }) => {
 
         <div className="bg-white p-8 rounded-[40px] shadow-2xl border border-gray-100 mb-10 flex items-center gap-6 transform hover:scale-[1.02] transition-all cursor-pointer">
           <div className="bg-blue-50 p-5 rounded-2xl"><CreditCard className="w-8 h-8 text-blue-600" /></div>
-          <div className="flex-grow font-black italic text-2xl tracking-tighter uppercase">Visa •••• 9999</div>
-          <div className="text-xs font-black text-gray-300 uppercase tracking-[0.3em]">Pay</div>
+          <div className="flex-grow font-black italic text-2xl tracking-tighter uppercase">Moyen de paiement</div>
+          <div className="text-xs font-black text-gray-300 uppercase tracking-[0.3em]">Ajouter</div>
         </div>
 
         <button
